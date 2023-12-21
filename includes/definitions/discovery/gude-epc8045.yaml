@@ -1,0 +1,98 @@
+mib: GUDEADS-EPC8045-MIB
+modules:
+    sensors:
+        current:
+            data:
+                -
+                    oid: epc8045Current
+                    num_oid: '.1.3.6.1.4.1.28507.87.1.5.1.2.1.5.1'
+                    descr: 'Input'
+                    divisor: 1000
+                    group: ports
+                -
+                    oid: epc8045spCurrent
+                    num_oid: '.1.3.6.1.4.1.28507.87.1.5.5.2.1.5.{{ $index }}'
+                    index: 'epc8045spCurrent.{{ $index }}'
+                    descr: 'Output {{ $index }}'
+                    divisor: 1000
+                    group: ports
+                -
+                    oid: epc8045ResidualCurrent
+                    num_oid: '.1.3.6.1.4.1.28507.87.1.5.1.2.1.24.1'
+                    descr: 'residual'
+                    divisor: 1000000
+                    group: residual
+        frequency:
+            data:
+                -
+                    oid: epc8045Frequency
+                    num_oid: '.1.3.6.1.4.1.28507.87.1.5.1.2.1.7.1'
+                    descr: 'Input'
+                    divisor: 100
+                    group: ports
+                -
+                    oid: epc8045spFrequency
+                    num_oid: '.1.3.6.1.4.1.28507.87.1.5.5.2.1.7.{{ $index }}'
+                    index: 'epc8045spFrequency.{{ $index }}'
+                    descr: 'Output {{ $index }}'
+                    divisor: 100
+                    group: ports
+        power:
+            data:
+                -
+                    oid: epc8045PowerActive
+                    num_oid: '.1.3.6.1.4.1.28507.87.1.5.1.2.1.4.1'
+                    descr: 'Input'
+                -
+                    oid: epc8045spPowerActive
+                    num_oid: '.1.3.6.1.4.1.28507.87.1.5.5.2.1.4.{{ $index }}'
+                    index: 'epc8045spPowerActive.{{ $index }}'
+                    descr: 'Output {{ $index }}'
+        power_consumed:
+            data:
+                -
+                    oid: epc8045AbsEnergyActive 
+                    num_oid: '.1.3.6.1.4.1.28507.87.1.5.1.2.1.3.1'
+                    descr: 'Input'
+                    divisor: 1000
+                -
+                    oid: epc8045spAbsEnergyActive
+                    num_oid: '.1.3.6.1.4.1.28507.87.1.5.5.2.1.3.{{ $index }}'
+                    index: 'epc8045spAbsEnergyActive.{{ $index }}'
+                    descr: 'Output {{ $index }}'
+                    divisor: 1000
+        temperature:
+            data:
+                -
+                    oid: epc8045CPUSensorTcpu
+                    num_oid: '.1.3.6.1.4.1.28507.87.1.5.14.4.0'
+                    descr: 'CPU Board'
+                    divisor: 10
+        voltage:
+            data:
+                -
+                    oid: epc8045CPUSensorVmain
+                    num_oid: '.1.3.6.1.4.1.28507.87.1.5.14.3.0'
+                    descr: 'Main CPU'
+                    divisor: 100
+                    group: system
+                -
+                    oid: epc8045Voltage
+                    num_oid: '.1.3.6.1.4.1.28507.87.1.5.1.2.1.6.1'
+                    descr: 'Input'
+                    group: ports
+                -
+                    oid: epc8045spVoltage
+                    num_oid: '.1.3.6.1.4.1.28507.87.1.5.5.2.1.6.{{ $index }}'
+                    index: 'epc8045spVoltage.{{ $index }}'
+                    descr: 'Output {{ $index }}'
+                    group: ports
+        state:
+            data:
+                -
+                    oid: epc8045PortState
+                    num_oid: '.1.3.6.1.4.1.28507.87.1.3.1.2.1.3.{{ $index }}'
+                    descr: 'Port {{ $index }}'
+                    states:
+                        - { value: 0, generic: 0, graph: 0, descr: 'Off' }
+                        - { value: 1, generic: 0, graph: 0, descr: 'On' }
